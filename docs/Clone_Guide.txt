@@ -1,0 +1,32 @@
+# Cloning and Managing a GitHub Repo Across Machines
+
+## ✅ Why Clone a Repo on Another Machine?
+
+You should clone a repository to another device when:
+- 🔁 You want to continue development on a different computer
+- 🧪 You need to test your install instructions or behavior in a clean environment
+- 💥 Your original machine is lost or damaged (disaster recovery)
+- 🤝 You're collaborating with others who need their own local copy
+- 💻 You're switching platforms (e.g., Windows to Mac)
+
+## 🛠️ How to Clone
+
+1. Open a terminal or Git-enabled shell on the second device
+2. Navigate to the folder where you want to store the project
+3. Run:
+
+```
+git clone https://github.com/D29197/ninjatrader-indicators.git
+```
+
+This creates a complete copy with:
+- All code
+- Version history
+- Tags (like `v1.0`)
+- Branches (defaults to `main`)
+
+## 💡 Other Considerations
+
+- You can work offline after cloning, then sync with `git push`
+- Make sure Git is installed (`git --version`)
+- If using SSH instead of HTTPS, configure your SSH keys
