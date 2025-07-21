@@ -1,22 +1,36 @@
-# NinjaTrader Indicators Collection
+# NinjaTrader Indicators Repository
 
-This repository contains a set of custom NinjaTrader indicators developed to enhance trading analysis. These indicators are written in NinjaScript and are designed for manual import into NinjaTrader (version 8.1.5.2 or later).
+This repository contains custom NinjaScript indicators for use within the NinjaTrader 8.1.5.2 platform.
 
-## 📦 Included Indicators
-- **EMALowMarker** – Draws a horizontal line at the lowest EMA value over a lookback period.
-- **EMAFlatSegmentMarker** – Marks short flat segments when the EMA remains unchanged over consecutive bars.
-- **EnhancedMACD_Full** – A modified MACD with histogram bars and colored signals plus MACD/Signal line overlays.
+## Included Indicators
 
-## 🔧 Installation Instructions (Manual Method)
-1. Open NinjaTrader
-2. Go to `New > NinjaScript Editor`
-3. Expand the `Indicators` folder
-4. Right-click on `Indicators` and select `Add New Indicator`
-5. Enter the exact name (e.g., `EMALowMarker`), skip the description
-6. On each wizard screen, leave default values (unless otherwise directed)
-7. Once the generated template code appears, replace it fully with the content of the corresponding `.cs` file
-8. Press `F5` or click Compile
+- **EMALowMarker.cs**: Draws a horizontal line at the lowest EMA over a lookback period.
+- **EMAFlatSegmentMarker.cs**: Highlights flat segments of the EMA on the chart.
+- **EnhancedMACD_Full.cs**: A custom MACD indicator with dual-line plots and a color-coded histogram.
 
-## 🗂️ Structure
-- Root folder contains the `.cs` files and `README.md`
-- `/docs/` contains documentation and installation guides
+## Manual Installation
+
+To manually install these indicators in NinjaTrader:
+
+1. Open NinjaTrader and navigate to: `New > NinjaScript Editor > Indicators`.
+2. Right-click the `Indicators` folder and select **Add New Indicator**.
+3. Follow the wizard:
+   - Click **Next** through the welcome panel.
+   - Enter the name (e.g., `EMALowMarker`), skipping the description since it's embedded in the code.
+   - Leave default properties as-is unless instructed.
+   - Click **Generate** to create the stub.
+4. Replace the generated code block within the `NinjaTrader.NinjaScript.Indicators` namespace with the full content from the `.cs` file.
+5. Press **F5** or click **Compile**.
+
+## Versioning Strategy
+
+This repository uses a **dual versioning approach**:
+
+- **File-level versions**: Each `.cs` file includes a version tag comment near the top (e.g., `// Version: 1.2.0`).
+- **System-level versioning**: Git is used to tag overall releases (e.g., `v1.2.0`).
+
+Since this project has a single contributor and infrequent updates, versioning details are consolidated here in the `README.md`.
+
+## Contact
+
+This repository is maintained by Darryl Conliffe.
