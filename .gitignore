@@ -1,0 +1,15 @@
+# Build output
+/bin/
+/obj/
+
+# Logs and temp files
+*.log
+*.tmp
+*.cache
+
+# DLLs
+*.dll
+
+# VSCode workspace settings
+.vscode/
+*.code-workspace
