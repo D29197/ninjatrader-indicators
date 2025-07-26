@@ -6,7 +6,7 @@ This repository contains custom NinjaScript indicators for use within the NinjaT
 
 - **EMALowMarker.cs**: Draws a horizontal line at the lowest EMA over a lookback period.
 - **EMAFlatSegmentMarker.cs**: Highlights flat segments of the EMA on the chart.
-- **EnhancedMACD_Full.cs**: A custom MACD indicator with dual-line plots and a color-coded histogram.
+- **MACDFull.cs**: A custom MACD indicator with dual-line plots and a color-coded histogram.
 
 ## Manual Installation
 

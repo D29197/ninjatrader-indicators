@@ -1,5 +1,6 @@
 
 // EMAFlatSegmentMarker.cs - Cleaned for NinjaTrader 8.1.5.2
+// Version: 1.0.0
 using System;
 using NinjaTrader.NinjaScript;
 using NinjaTrader.NinjaScript.Indicators;
