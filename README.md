@@ -31,6 +31,12 @@ This repository uses a **dual versioning approach**:
 
 Since this project has a single contributor and infrequent updates, versioning details are consolidated here in the `README.md`.
 
+## Documentation
+
+This repository includes a supplementary document containing coding conventions, known error patterns, troubleshooting tips, and style guidance for NinjaScript development:
+
+- [NinjaTrader_Coding_Best_Practices_and_Error_Reference_v1.0.md](NinjaTrader_Coding_Best_Practices_and_Error_Reference_v1.0.md)
+
 ## Contact
 
 This repository is maintained by Darryl Conliffe.
