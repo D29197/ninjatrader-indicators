@@ -1,29 +1,37 @@
 
-README - Cleaned NinjaTrader Indicators (v8.1.5.2+)
+# NinjaTrader Custom Indicators
 
-Included Files:
-1. EMALowMarker.cs - Draws a horizontal line at the lowest EMA value over a lookback period.
-2. EMAFlatSegmentMarker.cs - Draws horizontal segments when the EMA remains flat for 3 bars.
-3. EnhancedMACD_Full.cs - Combines MACD histogram with standard MACD and Signal line plots.
+This repository contains three custom NinjaTrader indicators, designed to enhance chart analysis using MACD and EMA patterns.
 
-Installation Notes:
-These scripts must be added manually. You cannot import them using the NinjaScript ZIP import tool.
+## Indicators
 
-Correct Manual Installation (as of NinjaTrader 8.1.5.2):
+### 1. MACDFull
+- Plots MACD line, Signal line, and a color-coded histogram.
+- Histogram color changes based on positive (green) or negative (red) divergence.
+- Parameters: Fast, Slow, Smooth
+
+### 2. EMALowMarker
+- Draws a horizontal line at the lowest EMA(14) value over a customizable lookback period.
+- Useful for identifying relative troughs in trend.
+
+### 3. EMAFlatSegmentMarker
+- Plots dots on the chart where the EMA(14) remains flat within a specified tolerance.
+- Helps visualize sideways market movement or indecision.
+
+## Installation
+
 1. Open NinjaTrader.
-2. Go to: New > NinjaScript Editor.
-3. In the editor, expand the 'Indicators' folder.
-4. Right-click 'Indicators' and select 'Add New Indicator'.
-5. Walk through the panels:
-   - **Panel 1**: Click Next.
-   - **Panel 2**: Enter name (e.g., EMALowMarker). Skip description — it's in the code.
-   - **Panel 3**: Leave 'Calculate on bar close' checked.
-                 For EMALowMarker and EMAFlatSegmentMarker, CHECK 'Overlay on price'.
-                 For EnhancedMACD_Full, LEAVE 'Overlay on price' UNCHECKED.
-   - **Panel 4**: Leave all options unchecked (no additional series or data inputs).
-6. Click 'Generate'.
-7. In the editor window that opens, DELETE all code and paste the entire content from the matching .cs file (including `using` lines).
-8. Press F5 or click Compile.
+2. Go to **NinjaScript Editor > Indicators > Add New**.
+3. Replace the contents of the generated file with the code from the corresponding `.cs` file.
+4. Compile and add the indicator to your chart from the **Indicators** window.
 
-Prepared by ChatGPT
-July 2025
+## Versioning
+
+- Each `.cs` file includes internal version tags.
+- Updates should be tracked using Git commits or GitHub releases for full repository versioning.
+
+---
+
+Maintained by: Darryl Conliffe
+
+Current Version: 1.0.0
