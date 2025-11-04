@@ -1,0 +1,29 @@
+# What Is Next
+
+Great! We'll start by enhancing the `EMALowMarker` to support
+ a **dynamic lookback period**, then explore how to make it usable in **auto-trading strategies** 
+ (e.g., strategy scripts that reference its output). 
+ The `.md` documentation will be updated along the way.
+
+**Here’s our working plan:**
+
+### ✅ Phase 1: Dynamic Lookback Enhancement
+
+* [ ] Replace fixed `LookbackPeriod` with optional dynamic logic.
+* [ ] Add a property to enable “UseBarsPeriod” if available (e.g., `BarsPeriod.Value`).
+* [ ] Fallback to default if not dynamic.
+* [ ] Annotate and format clearly for strategy integration.
+
+### 🔄 Phase 2: Strategy Integration Hooks
+
+* [ ] Make the lowest EMA value over the lookback period available as a public value (e.g., `LowestEMA`).
+* [ ] Add helper functions like `GetCurrentLowestEMA()` or `IsPriceNearLowestEMA()`.
+* [ ] Add XML summary comments to aid IntelliSense for strategy developers.
+
+### 📘 Phase 3: Update Documentation (`README.md`)
+
+* [ ] Note the new `UseDynamicLookback` option.
+* [ ] Add example of strategy integration (pseudo-code or snippet).
+* [ ] Version bump + notes.
+
+Would you like to begin now with Phase 1, starting with the updated indicator code that includes dynamic lookback logic?
