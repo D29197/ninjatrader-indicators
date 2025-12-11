@@ -27,3 +27,7 @@ Great! We'll start by enhancing the `EMALowMarker` to support
 * [ ] Version bump + notes.
 
 Would you like to begin now with Phase 1, starting with the updated indicator code that includes dynamic lookback logic?
+
+-----
+
+Included the JumpTo time button code in here since it is implemented as another Indicator.

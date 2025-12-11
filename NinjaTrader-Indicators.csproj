@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <OutputType>Library</OutputType>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <!-- Set your NinjaTrader install dir in Directory.Build.props (see below). 
+       Fallbacks try common locations. -->
+  <PropertyGroup>
+    <NinjaTraderDir Condition="'$(NinjaTraderDir)' == '' and Exists('C:\Program Files (x86)\NinjaTrader 8\bin64\NinjaTrader.Core.dll')">
+      C:\Program Files (x86)\NinjaTrader 8
+    </NinjaTraderDir>
+    <NinjaTraderDir Condition="'$(NinjaTraderDir)' == '' and Exists('C:\Program Files\NinjaTrader 8\bin64\NinjaTrader.Core.dll')">
+      C:\Program Files\NinjaTrader 8
+    </NinjaTraderDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="NinjaTrader.Core">
+      <HintPath>$(NinjaTraderDir)\bin64\NinjaTrader.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NinjaTrader.Vendor">
+      <HintPath>$(NinjaTraderDir)\bin64\NinjaTrader.Vendor.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+
+  <!-- Include all indicators/utilities at repo root and in subfolders -->
+  <ItemGroup>
+    <Compile Include="**\*.cs" Exclude="bin\**;obj\**;.vs\**" />
+  </ItemGroup>
+</Project>

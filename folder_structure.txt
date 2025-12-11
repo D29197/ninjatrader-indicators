@@ -1,0 +1,33 @@
+Folder PATH listing for volume Windows-SSD
+Volume serial number is 22CA-A733
+C:.
+|   .gitattributes
+|   .gitignore
+|   .markdownlint.json
+|   EMAFlatSegmentMarker.cs
+|   EMALowMarker.cs
+|   folder_structure.txt
+|   JumpToTimeButton.cs
+|   LICENSE
+|   MACDFull.cs
+|   MACDFull_Debug.cs
+|   MACDFull_Debug_ForceVisible.cs
+|   NinjaTrader-Indicators.csproj
+|   README.md
+|   README.txt
+|   snapshot.bat
+|   snapshot.ps1
+|   
++---.vscode
+|       settings.json
+|       
+\---docs
+        Clone_Guide.txt
+        GitHub_VSCode_Repo_Explainer.pdf
+        NinjaTrader_Coding_Best_Practices_and_Error_Reference_v1.0.md
+        README.txt
+        README_JumpToTimeButton.md
+        Repo_Hygiene_Checklist.pdf
+        VSCode_GitHub_Sync_Checklist.pdf
+        What_is_next.txt
+        
