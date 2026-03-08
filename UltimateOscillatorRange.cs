@@ -35,24 +35,24 @@ namespace NinjaTrader.NinjaScript.Indicators
 		{
 			if (State == State.SetDefaults)
 			{
-				Description					= Custom.Resource.NinjaScriptIndicatorDescriptionUltimateOscillator;
-				Name						= Custom.Resource.NinjaScriptIndicatorNameUltimateOscillator;
+				Description					= "Custom copy of Ultimate Oscillator.";
+				Name						= "Ultimate Oscillator Range";
 				IsSuspendedWhileInactive	= true;
 				Fast						= 7;
 				Intermediate				= 14;
 				Slow						= 28;
 
-				AddPlot(Brushes.DodgerBlue,		Custom.Resource.NinjaScriptIndicatorNameUltimateOscillator);
+				AddPlot(Brushes.DodgerBlue, "Ultimate Oscillator Range");
 
-				AddLine(Brushes.DarkGray,	30,	Custom.Resource.NinjaScriptIndicatorOversold);
-				AddLine(Brushes.DarkGray,	50,	Custom.Resource.NinjaScriptIndicatorNeutral);
-				AddLine(Brushes.DarkGray,	70,	Custom.Resource.NinjaScriptIndicatorOverbought);
+				AddLine(Brushes.DarkGray, 30, Custom.Resource.NinjaScriptIndicatorOversold);
+				AddLine(Brushes.DarkGray, 50, Custom.Resource.NinjaScriptIndicatorNeutral);
+				AddLine(Brushes.DarkGray, 70, Custom.Resource.NinjaScriptIndicatorOverbought);
 			}
 			else if (State == State.Configure)
 			{
-				constant1			= Slow / Fast ;
-				constant2			= Slow / Intermediate;
-				constant3			= constant1 + constant2 + 1;
+				constant1 = (double) Slow / Fast;
+				constant2 = (double) Slow / Intermediate;
+				constant3 = constant1 + constant2 + 1;
 			}
 			else if (State == State.DataLoaded)
 			{
@@ -70,8 +70,7 @@ namespace NinjaTrader.NinjaScript.Indicators
 		protected override void OnBarUpdate()
 		{
 			if (CurrentBar == 0)
-				Value[0] =  0;
-
+				Value[0] = 0;
 			else
 			{
 				double high0	= High[0];
@@ -79,17 +78,18 @@ namespace NinjaTrader.NinjaScript.Indicators
 				double close0	= Close[0];
 				double close1	= Close[1];
 
-				buyingPressure[0] 	= close0 - Math.Min(low0, close1);
-				trueRange[0] 		= Math.Max(Math.Max(high0 - low0, high0 - close1), close1 - low0);
+				buyingPressure[0] = close0 - Math.Min(low0, close1);
+				trueRange[0] = Math.Max(Math.Max(high0 - low0, high0 - close1), close1 - low0);
 
-				// Use previous value if we get into trouble
 				if (sumTrFast[0] == 0 || sumTrIntermediate[0] == 0 || sumTrSlow[0] == 0)
 				{
 					Value[0] = Value[1];
 					return;
 				}
 
-				Value[0] = (sumBpFast[0] / sumTrFast[0] * constant1 + sumBpIntermediate[0] / sumTrIntermediate[0] * constant2 + sumBpSlow[0] / sumTrSlow[0])
+				Value[0] = (sumBpFast[0] / sumTrFast[0] * constant1
+					+ sumBpIntermediate[0] / sumTrIntermediate[0] * constant2
+					+ sumBpSlow[0] / sumTrSlow[0])
 					/ constant3 * 100;
 			}
 		}
@@ -117,18 +117,27 @@ namespace NinjaTrader.NinjaScript.Indicators
 	public partial class Indicator : NinjaTrader.Gui.NinjaScript.IndicatorRenderBase
 	{
 		private UltimateOscillatorRange[] cacheUltimateOscillatorRange;
-		public UltimateOscillatorRange UltimateOscillator(int fast, int intermediate, int slow)
+
+		public UltimateOscillatorRange UltimateOscillatorRange(int fast, int intermediate, int slow)
 		{
-			return UltimateOscillator(Input, fast, intermediate, slow);
+			return UltimateOscillatorRange(Input, fast, intermediate, slow);
 		}
 
-		public UltimateOscillatorRange UltimateOscillator(ISeries<double> input, int fast, int intermediate, int slow)
+		public UltimateOscillatorRange UltimateOscillatorRange(ISeries<double> input, int fast, int intermediate, int slow)
 		{
 			if (cacheUltimateOscillatorRange != null)
 				for (int idx = 0; idx < cacheUltimateOscillatorRange.Length; idx++)
-					if (cacheUltimateOscillatorRange[idx] != null && cacheUltimateOscillatorRange[idx].Fast == fast && cacheUltimateOscillatorRange[idx].Intermediate == intermediate && cacheUltimateOscillatorRange[idx].Slow == slow && cacheUltimateOscillatorRange[idx].EqualsInput(input))
+					if (cacheUltimateOscillatorRange[idx] != null
+						&& cacheUltimateOscillatorRange[idx].Fast == fast
+						&& cacheUltimateOscillatorRange[idx].Intermediate == intermediate
+						&& cacheUltimateOscillatorRange[idx].Slow == slow
+						&& cacheUltimateOscillatorRange[idx].EqualsInput(input))
 						return cacheUltimateOscillatorRange[idx];
-			return CacheIndicator<UltimateOscillatorRange>(new UltimateOscillatorRange(){ Fast = fast, Intermediate = intermediate, Slow = slow }, input, ref cacheUltimateOscillatorRange);
+
+			return CacheIndicator<UltimateOscillatorRange>(
+				new UltimateOscillatorRange() { Fast = fast, Intermediate = intermediate, Slow = slow },
+				input,
+				ref cacheUltimateOscillatorRange);
 		}
 	}
 }
@@ -137,14 +146,14 @@ namespace NinjaTrader.NinjaScript.MarketAnalyzerColumns
 {
 	public partial class MarketAnalyzerColumn : MarketAnalyzerColumnBase
 	{
-		public Indicators.UltimateOscillatorRange UltimateOscillator(int fast, int intermediate, int slow)
+		public Indicators.UltimateOscillatorRange UltimateOscillatorRange(int fast, int intermediate, int slow)
 		{
-			return indicator.UltimateOscillator(Input, fast, intermediate, slow);
+			return indicator.UltimateOscillatorRange(Input, fast, intermediate, slow);
 		}
 
-		public Indicators.UltimateOscillatorRange UltimateOscillator(ISeries<double> input , int fast, int intermediate, int slow)
+		public Indicators.UltimateOscillatorRange UltimateOscillatorRange(ISeries<double> input, int fast, int intermediate, int slow)
 		{
-			return indicator.UltimateOscillator(input, fast, intermediate, slow);
+			return indicator.UltimateOscillatorRange(input, fast, intermediate, slow);
 		}
 	}
 }
@@ -153,14 +162,14 @@ namespace NinjaTrader.NinjaScript.Strategies
 {
 	public partial class Strategy : NinjaTrader.Gui.NinjaScript.StrategyRenderBase
 	{
-		public Indicators.UltimateOscillatorRange UltimateOscillator(int fast, int intermediate, int slow)
+		public Indicators.UltimateOscillatorRange UltimateOscillatorRange(int fast, int intermediate, int slow)
 		{
-			return indicator.UltimateOscillator(Input, fast, intermediate, slow);
+			return indicator.UltimateOscillatorRange(Input, fast, intermediate, slow);
 		}
 
-		public Indicators.UltimateOscillatorRange UltimateOscillator(ISeries<double> input , int fast, int intermediate, int slow)
+		public Indicators.UltimateOscillatorRange UltimateOscillatorRange(ISeries<double> input, int fast, int intermediate, int slow)
 		{
-			return indicator.UltimateOscillator(input, fast, intermediate, slow);
+			return indicator.UltimateOscillatorRange(input, fast, intermediate, slow);
 		}
 	}
 }
