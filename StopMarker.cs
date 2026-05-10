@@ -1,3 +1,11 @@
+//
+// James Williams Stop Marker
+//
+#region Using declarations
+using System.ComponentModel.DataAnnotations;
+using System.Windows.Media;
+#endregion
+
 #region Using declarations
 using NinjaTrader.Cbi;
 using NinjaTrader.Gui;
@@ -271,58 +279,58 @@ namespace NinjaTrader.NinjaScript.Indicators
 }
 
 #region NinjaScript generated code. Neither change nor remove.
+
 namespace NinjaTrader.NinjaScript.Indicators
 {
-    public partial class Indicator : NinjaTrader.Gui.NinjaScript.IndicatorRenderBase
-    {
-        private StopMarker[] cacheStopMarker;
+	public partial class Indicator : NinjaTrader.Gui.NinjaScript.IndicatorRenderBase
+	{
+		private StopMarker[] cacheStopMarker;
+		public StopMarker StopMarker(int period, SimpleFont font, StopMarkerDisplayValue displayMode, Brush stopFillBrush, Brush targetFillBrush, Brush outlineBrush, Brush textBrush, float leftOffset, float verticalOffset)
+		{
+			return StopMarker(Input, period, font, displayMode, stopFillBrush, targetFillBrush, outlineBrush, textBrush, leftOffset, verticalOffset);
+		}
 
-        public StopMarker StopMarker(SimpleFont font,
-            StopMarkerDisplayValue displayMode,
-            Brush stopFillBrush, Brush targetFillBrush,
-            Brush outlineBrush, Brush textBrush,
-            float leftOffset, float verticalOffset)
-        {
-            return StopMarker(Input, font, displayMode,
-                stopFillBrush, targetFillBrush, outlineBrush, textBrush,
-                leftOffset, verticalOffset);
-        }
-
-        public StopMarker StopMarker(ISeries<double> input,
-            SimpleFont font,
-            StopMarkerDisplayValue displayMode,
-            Brush stopFillBrush, Brush targetFillBrush,
-            Brush outlineBrush, Brush textBrush,
-            float leftOffset, float verticalOffset)
-        {
-            if (cacheStopMarker != null)
-                for (int idx = 0; idx < cacheStopMarker.Length; idx++)
-                    if (cacheStopMarker[idx] != null &&
-                        cacheStopMarker[idx].Font == font &&
-                        cacheStopMarker[idx].DisplayMode == displayMode &&
-                        cacheStopMarker[idx].StopFillBrush == stopFillBrush &&
-                        cacheStopMarker[idx].TargetFillBrush == targetFillBrush &&
-                        cacheStopMarker[idx].OutlineBrush == outlineBrush &&
-                        cacheStopMarker[idx].TextBrush == textBrush &&
-                        cacheStopMarker[idx].LeftOffset == leftOffset &&
-                        cacheStopMarker[idx].VerticalOffset == verticalOffset &&
-                        cacheStopMarker[idx].EqualsInput(input))
-                        return cacheStopMarker[idx];
-
-            return CacheIndicator<StopMarker>(
-                new StopMarker()
-                {
-                    Font = font,
-                    DisplayMode = displayMode,
-                    StopFillBrush = stopFillBrush,
-                    TargetFillBrush = targetFillBrush,
-                    OutlineBrush = outlineBrush,
-                    TextBrush = textBrush,
-                    LeftOffset = leftOffset,
-                    VerticalOffset = verticalOffset
-                },
-                input, ref cacheStopMarker);
-        }
-    }
+		public StopMarker StopMarker(ISeries<double> input, int period, SimpleFont font, StopMarkerDisplayValue displayMode, Brush stopFillBrush, Brush targetFillBrush, Brush outlineBrush, Brush textBrush, float leftOffset, float verticalOffset)
+		{
+			if (cacheStopMarker != null)
+				for (int idx = 0; idx < cacheStopMarker.Length; idx++)
+					if (cacheStopMarker[idx] != null && cacheStopMarker[idx].Period == period && cacheStopMarker[idx].Font == font && cacheStopMarker[idx].DisplayMode == displayMode && cacheStopMarker[idx].StopFillBrush == stopFillBrush && cacheStopMarker[idx].TargetFillBrush == targetFillBrush && cacheStopMarker[idx].OutlineBrush == outlineBrush && cacheStopMarker[idx].TextBrush == textBrush && cacheStopMarker[idx].LeftOffset == leftOffset && cacheStopMarker[idx].VerticalOffset == verticalOffset && cacheStopMarker[idx].EqualsInput(input))
+						return cacheStopMarker[idx];
+			return CacheIndicator<StopMarker>(new StopMarker(){ Period = period, Font = font, DisplayMode = displayMode, StopFillBrush = stopFillBrush, TargetFillBrush = targetFillBrush, OutlineBrush = outlineBrush, TextBrush = textBrush, LeftOffset = leftOffset, VerticalOffset = verticalOffset }, input, ref cacheStopMarker);
+		}
+	}
 }
+
+namespace NinjaTrader.NinjaScript.MarketAnalyzerColumns
+{
+	public partial class MarketAnalyzerColumn : MarketAnalyzerColumnBase
+	{
+		public Indicators.StopMarker StopMarker(int period, SimpleFont font, StopMarkerDisplayValue displayMode, Brush stopFillBrush, Brush targetFillBrush, Brush outlineBrush, Brush textBrush, float leftOffset, float verticalOffset)
+		{
+			return indicator.StopMarker(Input, period, font, displayMode, stopFillBrush, targetFillBrush, outlineBrush, textBrush, leftOffset, verticalOffset);
+		}
+
+		public Indicators.StopMarker StopMarker(ISeries<double> input , int period, SimpleFont font, StopMarkerDisplayValue displayMode, Brush stopFillBrush, Brush targetFillBrush, Brush outlineBrush, Brush textBrush, float leftOffset, float verticalOffset)
+		{
+			return indicator.StopMarker(input, period, font, displayMode, stopFillBrush, targetFillBrush, outlineBrush, textBrush, leftOffset, verticalOffset);
+		}
+	}
+}
+
+namespace NinjaTrader.NinjaScript.Strategies
+{
+	public partial class Strategy : NinjaTrader.Gui.NinjaScript.StrategyRenderBase
+	{
+		public Indicators.StopMarker StopMarker(int period, SimpleFont font, StopMarkerDisplayValue displayMode, Brush stopFillBrush, Brush targetFillBrush, Brush outlineBrush, Brush textBrush, float leftOffset, float verticalOffset)
+		{
+			return indicator.StopMarker(Input, period, font, displayMode, stopFillBrush, targetFillBrush, outlineBrush, textBrush, leftOffset, verticalOffset);
+		}
+
+		public Indicators.StopMarker StopMarker(ISeries<double> input , int period, SimpleFont font, StopMarkerDisplayValue displayMode, Brush stopFillBrush, Brush targetFillBrush, Brush outlineBrush, Brush textBrush, float leftOffset, float verticalOffset)
+		{
+			return indicator.StopMarker(input, period, font, displayMode, stopFillBrush, targetFillBrush, outlineBrush, textBrush, leftOffset, verticalOffset);
+		}
+	}
+}
+
 #endregion
